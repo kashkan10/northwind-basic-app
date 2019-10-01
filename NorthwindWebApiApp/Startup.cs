@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NorthwindWebApiApp.Services;
+using NorthwindWebApiApp.MappingProfiles;
+using AutoMapper;
 
 namespace NorthwindWebApiApp
 {
@@ -25,6 +27,15 @@ namespace NorthwindWebApiApp
 #pragma warning disable CA1822
         public void ConfigureServices(IServiceCollection services)
         {
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+              mc.AddProfile(new OrderServiceMappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Northwind Web API", Version = "v1" });
