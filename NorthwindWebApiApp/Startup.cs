@@ -41,6 +41,7 @@ namespace NorthwindWebApiApp
 					options.ReportApiVersions = true;
 				});
 				
+
             services.AddControllers();
             services.AddScoped<IOrderService, OrderService>();
             services.Configure<Configuration.NorthwindServiceConfiguration>(this.configuration.GetSection("NorthwindServiceConfiguration"));
