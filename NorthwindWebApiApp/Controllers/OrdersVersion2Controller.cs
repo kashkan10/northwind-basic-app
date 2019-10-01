@@ -43,5 +43,26 @@ namespace NorthwindWebApiApp.Controllers
 				throw;
 			}
 		}
+		
+		/// <summary>
+        /// Get order by Id
+        /// </summary>
+		/// <param name="orderId"></param>
+		/// <returns>Order</returns>
+        [HttpGet("{orderId}")]
+        public async Task<ActionResult<FullOrderModel>> GetOrder(int orderId)
+        {
+			this.logger.LogInformation("Calling OrdersController.GetOrder(id)");
+			try
+			{
+				var result = await this.orderService.GetOrderAsync(orderId);
+                return this.Ok(this.mapper.Map<FullOrderModel>(result));
+			}
+			catch (Exception e)
+			{
+				this.logger.LogError(e, "Exception in OrdersController.GetOrder(id)");
+				throw;
+			}  
+        }
 	}
 }
