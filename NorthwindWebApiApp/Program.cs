@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 
 namespace NorthwindWebApiApp
 {
@@ -19,6 +20,12 @@ namespace NorthwindWebApiApp
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+				.ConfigureLogging(config =>
+				{
+					config.ClearProviders();
+					config.AddConsole();
+					config.AddDebug();
+				});
     }
 }
