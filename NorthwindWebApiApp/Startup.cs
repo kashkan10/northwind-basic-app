@@ -34,6 +34,13 @@ namespace NorthwindWebApiApp
                 c.IncludeXmlComments(xmlPath);
             });
 
+			services.AddApiVersioning(
+				options =>
+				{
+					// reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
+					options.ReportApiVersions = true;
+				});
+				
             services.AddControllers();
             services.AddScoped<IOrderService, OrderService>();
             services.Configure<Configuration.NorthwindServiceConfiguration>(this.configuration.GetSection("NorthwindServiceConfiguration"));
