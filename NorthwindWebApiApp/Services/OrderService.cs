@@ -25,7 +25,7 @@ namespace NorthwindWebApiApp.Services
         {
             var orderTaskFactory = new TaskFactory<IEnumerable<NorthwindModel.Order>>();
 			
-			this.logger.LogInformation($"Getting data from {this.uri.AbsoluteUri}.");
+			this.logger.LogDebug($"Getting data from {this.uri.AbsoluteUri}.");
 			
             var orders = await orderTaskFactory.FromAsync(
                 this.entities.Orders.BeginExecute(null, null),
@@ -43,7 +43,7 @@ namespace NorthwindWebApiApp.Services
         {
             var orderQueryTaskFactory = new TaskFactory<IEnumerable<NorthwindModel.Orders_Qry>>();
 			
-			this.logger.LogInformation($"Getting data from {this.uri.AbsoluteUri}.");
+			this.logger.LogDebug($"Getting data from {this.uri.AbsoluteUri}.");
 			
             var query = this.entities.Orders_Qries.AddQueryOption("$filter", $"OrderID eq {orderId}");
 
@@ -73,7 +73,7 @@ namespace NorthwindWebApiApp.Services
         {
             var orderTaskFactory = new TaskFactory<IEnumerable<NorthwindModel.Order>>();
 			
-			this.logger.LogInformation($"Getting data from {this.uri.AbsoluteUri}.");
+			this.logger.LogDebug($"Getting data from {this.uri.AbsoluteUri}.");
 
             var orders = await orderTaskFactory.FromAsync(
                 this.entities.Orders.BeginExecute(null, null),
