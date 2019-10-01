@@ -59,5 +59,23 @@ namespace NorthwindWebApiApp.Services
                 ShipVia = order.ShipVia,
             };
         }
+		
+		public async Task<IEnumerable<BriefOrderVersion2Model>> GetExtendedOrdersAsync()
+        {
+            var orderTaskFactory = new TaskFactory<IEnumerable<NorthwindModel.Order>>();
+
+            var orders = await orderTaskFactory.FromAsync(
+                this.entities.Orders.BeginExecute(null, null),
+                iar => this.entities.Orders.EndExecute(iar));
+
+            return orders.Select(o => new BriefOrderVersion2Model
+            {
+				OrderId = o.OrderID,
+                OrderDate = o.OrderDate,
+                RequiredDate = o.RequiredDate,
+				CustomerId = o.CustomerID,
+				EmployeeId = o.EmployeeID,
+            }).ToArray();
+        }
     }
 }
