@@ -11,11 +11,11 @@ namespace NorthwindWebApiApp.Services
     {
         private readonly NorthwindModel.NorthwindEntities entities;
 
-        /*public OrderService(IOptions<Configuration.NorthwindServiceConfiguration> northwindServiceConfiguration)
+        public OrderService(IOptions<Configuration.NorthwindServiceConfiguration> northwindServiceConfiguration)
         {
             var uri = northwindServiceConfiguration == null ? throw new ArgumentNullException(nameof(northwindServiceConfiguration)) : northwindServiceConfiguration.Value.Uri;
             this.entities = new NorthwindModel.NorthwindEntities(uri);
-        }*/
+        }
 
         public async Task<IEnumerable<BriefOrderModel>> GetOrdersAsync()
         {
