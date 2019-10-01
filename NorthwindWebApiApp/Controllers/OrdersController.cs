@@ -18,12 +18,22 @@ namespace NorthwindWebApiApp.Controllers
             this.orderService = orderService ?? throw new ArgumentNullException(nameof(orderService));
         }
 
+		
+		/// <summary>
+        /// Get all orders
+        /// </summary>
+		/// <returns>Sequance of orders</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BriefOrderModel>>> GetOrders()
         {
             return this.Ok(await this.orderService.GetOrdersAsync());
         }
-
+		
+		/// <summary>
+        /// Get order by Id
+        /// </summary>
+		/// <param name="orderId"></param>
+		/// <returns>Order</returns>
         [HttpGet("{orderId}")]
         public async Task<ActionResult<FullOrderModel>> GetOrder(int orderId)
         {
