@@ -43,5 +43,16 @@ namespace NorthwindWebApiApp.Controllers
 				throw;
 			}
 		}
+
+        /// <summary>
+        /// Get order by Id
+        /// </summary>
+		/// <param name="orderId"></param>
+		/// <returns>Order</returns>
+        [HttpGet("{orderId}")]
+        public async Task<ActionResult<FullOrderModel>> GetOrder(int orderId)
+        {
+            return this.Ok(await this.orderService.GetOrderAsync(orderId));
+        }
 	}
 }
