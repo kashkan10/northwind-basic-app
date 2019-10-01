@@ -43,8 +43,8 @@ namespace NorthwindWebApiApp.Controllers
 				throw;
 			}
 		}
-
-        /// <summary>
+		
+		/// <summary>
         /// Get order by Id
         /// </summary>
 		/// <param name="orderId"></param>
@@ -55,7 +55,8 @@ namespace NorthwindWebApiApp.Controllers
 			this.logger.LogInformation("Calling OrdersController.GetOrder(id)");
 			try
 			{
-				return this.Ok(await this.orderService.GetOrderAsync(orderId));
+				var result = await this.orderService.GetOrderAsync(orderId);
+                return this.Ok(this.mapper.Map<FullOrderModel>(result));
 			}
 			catch (Exception e)
 			{
