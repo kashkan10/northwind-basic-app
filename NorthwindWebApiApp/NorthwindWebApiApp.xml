@@ -4,6 +4,19 @@
         <name>NorthwindWebApiApp</name>
     </assembly>
     <members>
+        <member name="M:NorthwindWebApiApp.Controllers.OrdersController.GetOrders">
+            <summary>
+            Get all orders
+            </summary>
+            <returns>Sequance of orders</returns>
+        </member>
+        <member name="M:NorthwindWebApiApp.Controllers.OrdersController.GetOrder(System.Int32)">
+            <summary>
+            Get order by Id
+            </summary>
+            <param name="orderId"></param>
+            <returns>Order</returns>
+        </member>
         <member name="T:NorthwindModel.NorthwindEntities">
             <summary>
             В схеме отсутствуют комментарии для NorthwindEntities.
