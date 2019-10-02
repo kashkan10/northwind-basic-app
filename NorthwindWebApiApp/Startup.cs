@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using NorthwindWebApiApp.Services;
 using NorthwindWebApiApp.MappingProfiles;
-using AutoMapper;
+using NorthwindWebApiApp.Services;
 
 namespace NorthwindWebApiApp
 {
@@ -22,15 +22,13 @@ namespace NorthwindWebApiApp
             this.configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 #pragma warning disable CA1822
         public void ConfigureServices(IServiceCollection services)
         {
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
             {
-              mc.AddProfile(new OrderServiceMappingProfile());
+                mc.AddProfile(new OrderServiceMappingProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
@@ -45,13 +43,12 @@ namespace NorthwindWebApiApp
                 c.IncludeXmlComments(xmlPath);
             });
 
-			services.AddApiVersioning(
-				options =>
-				{
-					// reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
-					options.ReportApiVersions = true;
-				});
-				
+            services.AddApiVersioning(
+                options =>
+                {
+                    // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
+                    options.ReportApiVersions = true;
+                });
 
             services.AddControllers();
             services.AddScoped<IOrderService, OrderService>();

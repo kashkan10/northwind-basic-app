@@ -1,11 +1,9 @@
-using System;
-
-namespace NorthwindWebApiApp.Models
+﻿namespace NorthwindWebApiApp.Models
 {
-	public class BriefOrderVersion2Model : BriefOrderModel
-	{
-		public string CustomerId { get; set; }
+    public class BriefOrderVersion2Model : BriefOrderModel
+    {
+        public string CustomerId { get; set; }
 
-		public int? EmployeeId { get; set; }
-	}
+        public int? EmployeeId { get; set; }
+    }
 }

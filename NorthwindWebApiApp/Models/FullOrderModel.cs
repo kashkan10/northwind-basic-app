@@ -1,4 +1,4 @@
-namespace NorthwindWebApiApp.Models
+﻿namespace NorthwindWebApiApp.Models
 {
     public class FullOrderModel : BriefOrderModel
     {

@@ -6,29 +6,29 @@
     <members>
         <member name="M:NorthwindWebApiApp.Controllers.OrdersController.GetOrders">
             <summary>
-            Get all orders
+            Get all orders.
             </summary>
-            <returns>Sequance of orders</returns>
+            <returns>Sequance of orders.</returns>
         </member>
         <member name="M:NorthwindWebApiApp.Controllers.OrdersController.GetOrder(System.Int32)">
             <summary>
-            Get order by Id
+            Get order by Id.
             </summary>
-            <param name="orderId"></param>
-            <returns>Order</returns>
+            <param name="orderId">Id of order.</param>
+            <returns>Order.</returns>
         </member>
         <member name="M:NorthwindWebApiApp.Controllers.OrdersVersion2Controller.GetOrders">
             <summary>
-            Get all orders
+            Get all orders.
             </summary>
-            <returns>Sequance of orders</returns>
+            <returns>Sequance of orders.</returns>
         </member>
         <member name="M:NorthwindWebApiApp.Controllers.OrdersVersion2Controller.GetOrder(System.Int32)">
             <summary>
-            Get order by Id
+            Get order by Id.
             </summary>
-            <param name="orderId"></param>
-            <returns>Order</returns>
+            <param name="orderId">Id of order.</param>
+            <returns>Order.</returns>
         </member>
         <member name="T:NorthwindModel.NorthwindEntities">
             <summary>
